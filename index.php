@@ -25,7 +25,11 @@ $to = 'chloe.ardoise@gmail.com';
  */
 // TODO Votre code ici.
 $message = wordwrap("Lorem ipsum dolor sit amet. Ea atque consequuntur et velit rerum ut facere corporis. Ut dicta nihil et dolorem consequa", 70, "\r\n");
-mail($to, 'test', $message, "-f audrey.ardois59@gmail.com");
+$headers = array(
+    "Reply-To" => "audrey.ardois59@gmail.com",
+    "X-Mailer" => "PHP/".phpversion()
+);
+mail($to, 'test', $message,$headers, "-f audrey.ardois59@gmail.com");
 
 if (isset($_GET['e'])){
     echo "Une erreur est survenue lors de l'envoie du mail.";
@@ -33,3 +37,6 @@ if (isset($_GET['e'])){
 elseif (isset($_GET ['s'])){
     echo "Le message a bien été envoyé. Merci.";
 }
+
+$file = fopen("mails.txt", "ab");
+echo fgets($message)."<br>";
