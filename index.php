@@ -6,9 +6,9 @@
  * 3. Déployez sur votre serveur et testez !
  */
 
-$from = '';
-$to = '';
-$message = 'Hello World, sending a simple mail !';
+$from = 'audrey.ardois59@gmail.com';
+$to = 'chloe.ardoise@gmail.com';
+//$message = 'Hello World, sending a simple mail !';
 // TODO Votre code ici.
 
 
@@ -24,3 +24,12 @@ $message = 'Hello World, sending a simple mail !';
  *     N'écrasez pas les valeurs déjà existantes ( s'il y en a ).
  */
 // TODO Votre code ici.
+$message = wordwrap("Lorem ipsum dolor sit amet. Ea atque consequuntur et velit rerum ut facere corporis. Ut dicta nihil et dolorem consequa", 70, "\r\n");
+mail($to, 'test', $message, "-f audrey.ardois59@gmail.com");
+
+if (isset($_GET['e'])){
+    echo "Une erreur est survenue lors de l'envoie du mail.";
+}
+elseif (isset($_GET ['s'])){
+    echo "Le message a bien été envoyé. Merci.";
+}
