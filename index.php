@@ -6,8 +6,8 @@
  * 3. Déployez sur votre serveur et testez !
  */
 
-$from = 'audrey.ardois59@gmail.com';
-$to = 'chloe.ardoise@gmail.com';
+$from = 'envoyeur.nom@mail.com';
+$to = 'destinataire.nom@mail.com';
 //$message = 'Hello World, sending a simple mail !';
 // TODO Votre code ici.
 
@@ -26,10 +26,10 @@ $to = 'chloe.ardoise@gmail.com';
 // TODO Votre code ici.
 $message = wordwrap("Lorem ipsum dolor sit amet. Ea atque consequuntur et velit rerum ut facere corporis. Ut dicta nihil et dolorem consequa", 70, "\r\n");
 $headers = array(
-    "Reply-To" => "audrey.ardois59@gmail.com",
+    "Reply-To" => "envoyeur.nom@mail.com",
     "X-Mailer" => "PHP/".phpversion()
 );
-mail($to, 'test', $message,$headers, "-f audrey.ardois59@gmail.com");
+mail($to, 'test', $message,$headers, "-f envoyeur.nom@mail.com");
 
 if (isset($_GET['e'])){
     echo "Une erreur est survenue lors de l'envoie du mail.";
