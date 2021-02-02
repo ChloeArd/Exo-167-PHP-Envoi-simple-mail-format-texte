@@ -24,12 +24,13 @@ $to = 'destinataire.nom@mail.com';
  *     N'écrasez pas les valeurs déjà existantes ( s'il y en a ).
  */
 // TODO Votre code ici.
-$message = wordwrap("Lorem ipsum dolor sit amet. Ea atque consequuntur et velit rerum ut facere corporis. Ut dicta nihil et dolorem consequa", 70, "\r\n");
+$message = "Lorem ipsum dolor sit amet. Ea atque consequuntur et velit rerum ut facere corporis. Ut dicta nihil et dolorem consequa";
+$messageCouper = wordwrap($message, 70, "\r\n");
 $headers = array(
     "Reply-To" => "envoyeur.nom@mail.com",
     "X-Mailer" => "PHP/".phpversion()
 );
-mail($to, 'test', $message,$headers, "-f envoyeur.nom@mail.com");
+mail($to, 'test', $messageCouper,$headers, "-f envoyeur.nom@mail.com");
 
 if (isset($_GET['e'])){
     echo "Une erreur est survenue lors de l'envoie du mail.";
@@ -38,5 +39,6 @@ elseif (isset($_GET ['s'])){
     echo "Le message a bien été envoyé. Merci.";
 }
 
-$file = fopen("mails.txt", "ab");
-echo fgets($message)."<br>";
+$file = fopen("mails.txt", "a+b");
+fwrite($file, "message : ".$message."., to :".$to."\n");
+fclose($file);
